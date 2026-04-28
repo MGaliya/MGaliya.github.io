@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Name | Aerospace Engineering Portfolio</title>
+  <meta name="description" content="Aerospace engineering portfolio featuring projects in aerodynamics, structures, propulsion, controls, CAD, simulation, and testing." />
+  <style>
+    :root {
+      --bg: #0f172a;
+      --panel: #111827;
+      --card: #1e293b;
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-2: #22c55e;
+      --border: #334155;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, var(--bg), #020617);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      width: min(1100px, 92%);
+      margin: 0 auto;
+    }
+
+    header {
+      padding: 32px 0;
+      border-bottom: 1px solid var(--border);
+      background: rgba(15, 23, 42, 0.85);
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(10px);
+      z-index: 10;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 0.03em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      font-size: 0.95rem;
+    }
+
+    .hero {
+      padding: 88px 0 64px;
+      display: grid;
+      grid-template-columns: 1.4fr 0.9fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.78rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 6vw, 4.7rem);
+      line-height: 1.05;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.1rem;
+      max-width: 680px;
+    }
+
+    .button-row {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 12px 18px;
+      border-radius: 999px;
+      font-weight: 700;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--text);
+    }
+
+    .button.primary {
+      background: var(--accent);
+      color: #082f49;
+      border-color: var(--accent);
+    }
+
+    .hero-card {
+      background: rgba(30, 41, 59, 0.85);
+      border: 1px solid var(--border);
+      padding: 28px;
+      border-radius: 24px;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.25);
+    }
+
+    .hero-card h2 {
+      margin-bottom: 14px;
+    }
+
+    .hero-card ul {
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    section {
+      padding: 64px 0;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+
+    .section-intro {
+      color: var(--muted);
+      max-width: 760px;
+      margin-bottom: 32px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: rgba(30, 41, 59, 0.9);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 24px;
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      color: #f8fafc;
+    }
+
+    .card p,
+    .card li {
+      color: var(--muted);
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 16px 0;
+    }
+
+    .tag {
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 5px 10px;
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    .project-card {
+      grid-column: span 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 330px;
+    }
+
+    .project-meta {
+      color: var(--accent-2);
+      font-size: 0.9rem;
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .results {
+      margin-top: 14px;
+      padding-left: 18px;
+    }
+
+    .skills-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .contact-panel {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.16), rgba(34, 197, 94, 0.12));
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 32px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    footer {
+      padding: 32px 0;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 850px) {
+      .hero,
+      .contact-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .grid,
+      .skills-list {
+        grid-template-columns: 1fr;
+      }
+
+      header {
+        position: static;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">Your Name · Aerospace Engineering</div>
+        <div class="nav-links">
+          <a href="#projects">Projects</a>
+          <a href="#skills">Skills</a>
+          <a href="#experience">Experience</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero container">
+      <div>
+        <div class="eyebrow">Aerospace Engineering Portfolio</div>
+        <h1>Design, analysis, simulation, and testing for aerospace systems.</h1>
+        <p>
+          I am an aerospace engineering student / graduate focused on aerodynamics, structures,
+          propulsion, flight dynamics, and technical problem-solving. This portfolio highlights my
+          engineering projects, CAD and simulation work, data analysis, and hands-on testing experience.
+        </p>
+        <div class="button-row">
+          <a class="button primary" href="Your_Name_Aerospace_Portfolio.pdf" target="_blank">Download PDF Portfolio</a>
+          <a class="button" href="https://www.linkedin.com/in/your-linkedin" target="_blank">LinkedIn</a>
+          <a class="button" href="https://github.com/your-github-username" target="_blank">GitHub</a>
+        </div>
+      </div>
+
+      <aside class="hero-card">
+        <h2>Portfolio Focus</h2>
+        <ul>
+          <li>Aircraft and spacecraft design projects</li>
+          <li>CAD, CFD, FEA, MATLAB, Python, and testing</li>
+          <li>Engineering decisions supported by calculations and data</li>
+          <li>Clear project results and technical communication</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <h2 class="section-title">Featured Projects</h2>
+        <p class="section-intro">
+          Replace these example cards with your strongest 3–5 aerospace projects. Each project should show
+          the problem, your method, tools used, and measurable results.
+        </p>
+
+        <div class="grid">
+          <article class="card project-card">
+            <div>
+              <div class="project-meta">Aerodynamics · CFD · Design</div>
+              <h3>UAV Wing Design and Analysis</h3>
+              <p>
+                Designed and analysed a fixed-wing UAV wing for low-speed endurance, combining airfoil selection,
+                aerodynamic sizing, CAD modelling, and simulation-led iteration.
+              </p>
+              <div class="tag-row">
+                <span class="tag">SolidWorks</span>
+                <span class="tag">ANSYS / CFD</span>
+                <span class="tag">MATLAB</span>
+              </div>
+              <ul class="results">
+                <li>Compared multiple airfoils and planform configurations.</li>
+                <li>Evaluated lift, drag, and stability constraints.</li>
+                <li>Documented final design trade-offs and limitations.</li>
+              </ul>
+            </div>
+            <a href="#contact">Ask me about this project →</a>
+          </article>
+
+          <article class="card project-card">
+            <div>
+              <div class="project-meta">Structures · FEA · Materials</div>
+              <h3>Lightweight Bracket Structural Optimisation</h3>
+              <p>
+                Modelled and analysed an aerospace-style mounting bracket under representative loading, using
+                stress analysis and design iteration to reduce mass while maintaining an acceptable safety factor.
+              </p>
+              <div class="tag-row">
+                <span class="tag">FEA</span>
+                <span class="tag">CAD</span>
+                <span class="tag">Stress Analysis</span>
+              </div>
+              <ul class="results">
+                <li>Identified stress concentrations and improved geometry.</li>
+                <li>Compared candidate materials and load cases.</li>
+                <li>Validated trends against hand calculations.</li>
+              </ul>
+            </div>
+            <a href="#contact">Ask me about this project →</a>
+          </article>
+
+          <article class="card project-card">
+            <div>
+              <div class="project-meta">Flight Dynamics · Controls · Coding</div>
+              <h3>Aircraft Stability and Control Model</h3>
+              <p>
+                Developed a flight dynamics model to evaluate longitudinal response, stability derivatives,
+                trim conditions, and control behaviour across selected flight conditions.
+              </p>
+              <div class="tag-row">
+                <span class="tag">MATLAB</span>
+                <span class="tag">Simulink</span>
+                <span class="tag">Python</span>
+              </div>
+              <ul class="results">
+                <li>Generated response plots for pitch, altitude, and speed.</li>
+                <li>Analysed stability and control sensitivity.</li>
+                <li>Summarised engineering assumptions and model limits.</li>
+              </ul>
+            </div>
+            <a href="#contact">Ask me about this project →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <h2 class="section-title">Technical Skills</h2>
+        <p class="section-intro">
+          Use this section to make your technical fit obvious to recruiters and engineering teams.
+        </p>
+
+        <div class="skills-list">
+          <div class="card">
+            <h3>Engineering Tools</h3>
+            <p>SolidWorks, CATIA, Fusion 360, ANSYS, Abaqus, OpenFOAM, MATLAB, Simulink, Python, Excel, LabVIEW.</p>
+          </div>
+          <div class="card">
+            <h3>Aerospace Topics</h3>
+            <p>Aerodynamics, flight mechanics, structures, propulsion, controls, aircraft performance, spacecraft systems.</p>
+          </div>
+          <div class="card">
+            <h3>Analysis and Testing</h3>
+            <p>CFD, FEA, hand calculations, design trade studies, data processing, wind tunnel testing, validation.</p>
+          </div>
+          <div class="card">
+            <h3>Manufacturing</h3>
+            <p>3D printing, composites, prototyping, mechanical assembly, test rig development, technical documentation.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <h2 class="section-title">Experience and Education</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Degree</h3>
+            <p><strong>[Your Degree]</strong><br />[Your University] · [Graduation Year]</p>
+            <p>Relevant modules: Aerodynamics, Propulsion, Flight Dynamics, Structures, Control Systems.</p>
+          </div>
+          <div class="card">
+            <h3>Experience</h3>
+            <p><strong>[Role / Internship / Research]</strong><br />[Organisation] · [Dates]</p>
+            <p>Summarise your technical work, tools used, and measurable engineering outcomes.</p>
+          </div>
+          <div class="card">
+            <h3>Awards / Activities</h3>
+            <p>AIAA, rocketry society, UAV team, Formula Student aero, CanSat, UKSEDS, design competitions, certifications.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-panel">
+          <div>
+            <h2 class="section-title">Contact</h2>
+            <p class="section-intro">
+              I am interested in aerospace engineering internships, graduate roles, research opportunities,
+              and technical collaborations.
+            </p>
+          </div>
+          <div>
+            <p><strong>Email:</strong> <a href="mailto:your.email@example.com">your.email@example.com</a></p>
+            <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/your-linkedin" target="_blank">linkedin.com/in/your-linkedin</a></p>
+            <p><strong>GitHub:</strong> <a href="https://github.com/your-github-username" target="_blank">github.com/your-github-username</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Your Name. Aerospace Engineering Portfolio.</p>
+    </div>
+  </footer
