@@ -198,7 +198,6 @@
     }
 
     .project-card {
-      grid-column: span 1;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -212,9 +211,47 @@
       font-weight: 700;
     }
 
-    .results {
-      margin-top: 14px;
-      padding-left: 18px;
+    .projects-carousel-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .projects-carousel {
+      overflow: hidden;
+      width: 100%;
+    }
+
+    .projects-track {
+      display: flex;
+      gap: 20px;
+      transition: transform 0.4s ease;
+    }
+
+    .projects-track .project-card {
+      min-width: calc((100% - 40px) / 3);
+      flex: 0 0 calc((100% - 40px) / 3);
+    }
+
+    .carousel-btn {
+      background: rgba(30, 41, 59, 0.9);
+      border: 1px solid var(--border);
+      color: var(--text);
+      width: 48px;
+      height: 48px;
+      border-radius: 999px;
+      font-size: 1.4rem;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .carousel-btn:hover {
+      background: rgba(56, 189, 248, 0.2);
+    }
+
+    .carousel-btn:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
     }
 
     .skills-list {
@@ -241,6 +278,13 @@
       font-size: 0.9rem;
     }
 
+    @media (max-width: 1000px) {
+      .projects-track .project-card {
+        min-width: calc((100% - 20px) / 2);
+        flex: 0 0 calc((100% - 20px) / 2);
+      }
+    }
+
     @media (max-width: 850px) {
       .hero,
       .contact-panel {
@@ -254,6 +298,22 @@
 
       header {
         position: static;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .projects-carousel-wrapper {
+        gap: 8px;
+      }
+
+      .projects-track .project-card {
+        min-width: 100%;
+        flex: 0 0 100%;
+      }
+
+      .carousel-btn {
+        width: 42px;
+        height: 42px;
       }
     }
   </style>
@@ -305,82 +365,114 @@
       <div class="container">
         <h2 class="section-title">Featured Projects</h2>
         <p class="section-intro">
-          These projects demonstrate my aerospace engineering capabilities across CFD, wind tunnel testing,
-          CAD modelling, motion analysis, design automation, 3D printing, and technical validation.
+          Browse through my engineering projects in CFD, CAD, testing, simulation,
+          prototyping, mechanical design, and design automation.
         </p>
 
-        <div class="grid">
-          <article class="card project-card">
-            <div>
-              <div class="project-meta">Final Year Dissertation · CFD · Wind Tunnel Testing</div>
-              <h3>Mitigating Wake Vortex through Winglet Design</h3>
-              <p>
-                Designed and evaluated winglet concepts to reduce wake vortex effects and improve aerodynamic
-                efficiency. The project combined SolidWorks design, Ansys Fluent simulations, 3D printed prototypes,
-                and wind tunnel testing to compare experimental flow behaviour against CFD predictions.
-              </p>
-              <div class="tag-row">
-                <span class="tag">SolidWorks</span>
-                <span class="tag">Ansys Fluent</span>
-                <span class="tag">Wind Tunnel Testing</span>
-                <span class="tag">3D Printing</span>
-              </div>
-              <ul class="results">
-                <li>Created winglet designs focused on wake vortex reduction and aerodynamic efficiency.</li>
-                <li>Analysed airflow, vortex behaviour, drag profiles, and pressure differentials.</li>
-                <li>Compared wind tunnel observations with CFD predictions for validation.</li>
-              </ul>
-            </div>
-            <a href="projects/winglet-design.html">View project →</a>
-          </article>
+        <div class="projects-carousel-wrapper">
+          <button class="carousel-btn" id="projects-prev" aria-label="Previous projects">
+            &#10094;
+          </button>
 
-          <article class="card project-card">
-            <div>
-              <div class="project-meta">Mechanical Design · Motion Analysis · Simulation</div>
-              <h3>Clutch Design and Motion Analysis</h3>
-              <p>
-                Designed and simulated a centrifugal clutch for a Honda GX engine using SolidWorks. Multiple shoe
-                configurations were assessed under varying RPM conditions to compare engagement behaviour,
-                torque delivery, contact forces, and durability.
-              </p>
-              <div class="tag-row">
-                <span class="tag">SolidWorks</span>
-                <span class="tag">Motion Analysis</span>
-                <span class="tag">Mechanical Design</span>
-                <span class="tag">Simulation</span>
-              </div>
-              <ul class="results">
-                <li>Modelled multiple clutch shoe configurations.</li>
-                <li>Simulated engagement behaviour under different rotational speeds.</li>
-                <li>Used simulation data to identify the best configuration for smooth power transmission.</li>
-              </ul>
-            </div>
-            <a href="projects/clutch-design.html">View project →</a>
-          </article>
+          <div class="projects-carousel" id="projects-carousel">
+            <div class="projects-track" id="projects-track">
 
-          <article class="card project-card">
-            <div>
-              <div class="project-meta">CAD Automation · VBA · Parametric Modelling</div>
-              <h3>SolidWorks API Gear Generator</h3>
-              <p>
-                Developed a SolidWorks API tool using VBA to automate spur gear design from user-defined parameters.
-                The script generated accurate 3D gear models inside SolidWorks, reducing repetitive manual modelling
-                and demonstrating practical CAD automation.
-              </p>
-              <div class="tag-row">
-                <span class="tag">SolidWorks API</span>
-                <span class="tag">VBA</span>
-                <span class="tag">Automation</span>
-                <span class="tag">Parametric CAD</span>
-              </div>
-              <ul class="results">
-                <li>Automated spur gear generation from custom input parameters.</li>
-                <li>Reduced manual modelling time by over 90%.</li>
-                <li>Validated gear geometry through test cases and export checks.</li>
-              </ul>
+              <article class="card project-card">
+                <div>
+                  <div class="project-meta">Final Year Dissertation · CFD · Wind Tunnel Testing</div>
+                  <h3>Mitigating Wake Vortex through Winglet Design</h3>
+                  <p>
+                    Designed and evaluated winglet concepts to reduce wake vortex effects and improve aerodynamic
+                    efficiency using SolidWorks, Ansys Fluent, 3D printing, and wind tunnel testing.
+                  </p>
+                  <div class="tag-row">
+                    <span class="tag">SolidWorks</span>
+                    <span class="tag">Ansys Fluent</span>
+                    <span class="tag">Wind Tunnel</span>
+                    <span class="tag">3D Printing</span>
+                  </div>
+                </div>
+                <a href="projects/winglet-design.html">View project →</a>
+              </article>
+
+              <article class="card project-card">
+                <div>
+                  <div class="project-meta">Mechanical Design · Motion Analysis · Simulation</div>
+                  <h3>Clutch Design and Motion Analysis</h3>
+                  <p>
+                    Designed and simulated a centrifugal clutch for a Honda GX engine, comparing engagement
+                    behaviour, torque delivery, contact forces, and durability.
+                  </p>
+                  <div class="tag-row">
+                    <span class="tag">SolidWorks</span>
+                    <span class="tag">Motion Analysis</span>
+                    <span class="tag">Mechanical Design</span>
+                    <span class="tag">Simulation</span>
+                  </div>
+                </div>
+                <a href="projects/clutch-design.html">View project →</a>
+              </article>
+
+              <article class="card project-card">
+                <div>
+                  <div class="project-meta">CAD Automation · VBA · Parametric Modelling</div>
+                  <h3>SolidWorks API Gear Generator</h3>
+                  <p>
+                    Developed a SolidWorks API tool using VBA to automate spur gear design from user-defined
+                    parameters and reduce repetitive CAD modelling work.
+                  </p>
+                  <div class="tag-row">
+                    <span class="tag">SolidWorks API</span>
+                    <span class="tag">VBA</span>
+                    <span class="tag">Automation</span>
+                    <span class="tag">Parametric CAD</span>
+                  </div>
+                </div>
+                <a href="projects/gear-generator.html">View project →</a>
+              </article>
+
+              <article class="card project-card">
+                <div>
+                  <div class="project-meta">Aircraft Modelling · CAD · Surface Design</div>
+                  <h3>A380 Surface Model</h3>
+                  <p>
+                    Created a surface model of the Airbus A380, focusing on aircraft geometry, CAD accuracy,
+                    surface modelling, and clean representation of complex aerospace forms.
+                  </p>
+                  <div class="tag-row">
+                    <span class="tag">CAD</span>
+                    <span class="tag">Surface Modelling</span>
+                    <span class="tag">Aircraft Geometry</span>
+                    <span class="tag">A380</span>
+                  </div>
+                </div>
+                <a href="projects/a380-surface-model.html">View project →</a>
+              </article>
+
+              <article class="card project-card">
+                <div>
+                  <div class="project-meta">Analysis · Renewable Energy · Engineering Evaluation</div>
+                  <h3>Wind Turbine Analysis</h3>
+                  <p>
+                    Analysed wind turbine performance and engineering behaviour through modelling, technical
+                    evaluation, and interpretation of system-level performance factors.
+                  </p>
+                  <div class="tag-row">
+                    <span class="tag">Analysis</span>
+                    <span class="tag">Simulation</span>
+                    <span class="tag">Energy Systems</span>
+                    <span class="tag">Performance</span>
+                  </div>
+                </div>
+                <a href="projects/wind-turbine-analysis.html">View project →</a>
+              </article>
+
             </div>
-            <a href="projects/gear-generator.html">View project →</a>
-          </article>
+          </div>
+
+          <button class="carousel-btn" id="projects-next" aria-label="Next projects">
+            &#10095;
+          </button>
         </div>
       </div>
     </section>
@@ -460,5 +552,52 @@
       <p>© 2026 Muhammad Patel. Aerospace Engineering Portfolio.</p>
     </div>
   </footer>
+
+  <script>
+    const track = document.getElementById("projects-track");
+    const prevBtn = document.getElementById("projects-prev");
+    const nextBtn = document.getElementById("projects-next");
+    const cards = Array.from(track.children);
+
+    let currentIndex = 0;
+
+    function cardsPerView() {
+      if (window.innerWidth <= 700) return 1;
+      if (window.innerWidth <= 1000) return 2;
+      return 3;
+    }
+
+    function updateCarousel() {
+      const visibleCards = cardsPerView();
+      const maxIndex = Math.max(0, cards.length - visibleCards);
+
+      if (currentIndex > maxIndex) {
+        currentIndex = maxIndex;
+      }
+
+      const cardWidth = cards[0].getBoundingClientRect().width;
+      const gap = 20;
+      const moveX = currentIndex * (cardWidth + gap);
+
+      track.style.transform = `translateX(-${moveX}px)`;
+
+      prevBtn.disabled = currentIndex === 0;
+      nextBtn.disabled = currentIndex >= maxIndex;
+    }
+
+    prevBtn.addEventListener("click", () => {
+      currentIndex = Math.max(0, currentIndex - 1);
+      updateCarousel();
+    });
+
+    nextBtn.addEventListener("click", () => {
+      const maxIndex = Math.max(0, cards.length - cardsPerView());
+      currentIndex = Math.min(maxIndex, currentIndex + 1);
+      updateCarousel();
+    });
+
+    window.addEventListener("resize", updateCarousel);
+    window.addEventListener("load", updateCarousel);
+  </script>
 </body>
 </html>
