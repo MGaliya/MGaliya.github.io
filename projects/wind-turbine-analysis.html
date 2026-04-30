@@ -186,7 +186,7 @@
 
     figure img {
       width: 100%;
-      max-height: 620px;
+      height: 560px;
       object-fit: contain;
       display: block;
       background: #ffffff;
@@ -210,6 +210,16 @@
       .highlight-grid,
       .evidence-grid {
         grid-template-columns: 1fr;
+      }
+
+      figure img {
+        height: 420px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      figure img {
+        height: 300px;
       }
     }
   </style>
