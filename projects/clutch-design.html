@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Clutch Design and Motion Analysis | Muhammad Patel</title>
   <meta name="description" content="Project page for Muhammad Patel's centrifugal clutch design, CAD modelling, FEA, and motion analysis project using SolidWorks." />
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
   <style>
     :root {
       --bg: #0f172a;
@@ -171,6 +172,36 @@
       font-size: 0.92rem;
     }
 
+    .model-card {
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .model-card h2 {
+      padding: 26px 26px 0;
+    }
+
+    .model-card p {
+      padding: 8px 26px 0;
+      color: var(--muted);
+    }
+
+    model-viewer {
+      width: 100%;
+      height: 620px;
+      display: block;
+      background: #ffffff;
+      margin-top: 22px;
+    }
+
+    .model-note {
+      padding: 14px 16px 18px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      border-top: 1px solid var(--border);
+      background: rgba(15, 23, 42, 0.65);
+    }
+
     .image-card {
       padding: 0;
       overflow: hidden;
@@ -263,6 +294,10 @@
         grid-template-columns: 1fr;
       }
 
+      model-viewer {
+        height: 460px;
+      }
+
       figure img,
       .image-pair figure img {
         height: 420px;
@@ -270,6 +305,10 @@
     }
 
     @media (max-width: 600px) {
+      model-viewer {
+        height: 340px;
+      }
+
       figure img,
       .image-pair figure img {
         height: 300px;
@@ -344,6 +383,26 @@
             tested through simulation. The work aimed to compare different shoe configurations and understand how
             the clutch bell and shoes respond as motor speed increases.
           </p>
+        </div>
+
+        <div class="card full model-card">
+          <h2>Interactive 3D Preview</h2>
+          <p>
+            Rotate, zoom, and inspect the simplified 2-shoe clutch configuration directly in the browser.
+          </p>
+          <model-viewer
+            src="../models/clutch-2-shoe.glb"
+            alt="Interactive 3D preview of the 2-shoe centrifugal clutch configuration"
+            camera-controls
+            auto-rotate
+            shadow-intensity="1"
+            exposure="0.9"
+            ar
+            oncontextmenu="return false">
+          </model-viewer>
+          <div class="model-note">
+            Interactive 3D preview of the 2-shoe clutch configuration. Additional 3-shoe and 4-shoe variants were modelled and compared as assembly configurations. This is a simplified web-viewing model, not the original CAD file.
+          </div>
         </div>
 
         <div class="card full image-card">
