@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>A380 Surface Modelling | Muhammad Patel</title>
   <meta name="description" content="Project page for Muhammad Patel's A380 surface modelling project using SolidWorks surface modelling tools including lofted surface, boundary surface, filled surface, trimmed surface, knit surface, and split line." />
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
   <style>
     :root {
       --bg: #0f172a;
@@ -171,10 +172,45 @@
       font-size: 0.92rem;
     }
 
-    .evidence-grid {
+    .model-card {
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .model-card h2 {
+      padding: 26px 26px 0;
+    }
+
+    .model-card p {
+      padding: 8px 26px 0;
+      color: var(--muted);
+    }
+
+    model-viewer {
+      width: 100%;
+      height: 620px;
+      display: block;
+      background: #ffffff;
+      margin-top: 22px;
+    }
+
+    .model-note {
+      padding: 14px 16px 18px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      border-top: 1px solid var(--border);
+      background: rgba(15, 23, 42, 0.65);
+    }
+
+    .image-card {
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .image-pair {
       display: grid;
-      grid-template-columns: 1fr;
-      gap: 24px;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
     }
 
     figure {
@@ -184,6 +220,11 @@
       overflow: hidden;
     }
 
+    .image-card figure {
+      border: none;
+      border-radius: 22px;
+    }
+
     figure img {
       width: 100%;
       height: 560px;
@@ -191,6 +232,10 @@
       display: block;
       background: #ffffff;
       cursor: zoom-in;
+    }
+
+    .image-pair figure img {
+      height: 430px;
     }
 
     figcaption {
@@ -245,17 +290,27 @@
     @media (max-width: 900px) {
       .grid,
       .highlight-grid,
-      .evidence-grid {
+      .image-pair {
         grid-template-columns: 1fr;
       }
 
-      figure img {
+      model-viewer {
+        height: 460px;
+      }
+
+      figure img,
+      .image-pair figure img {
         height: 420px;
       }
     }
 
     @media (max-width: 600px) {
-      figure img {
+      model-viewer {
+        height: 340px;
+      }
+
+      figure img,
+      .image-pair figure img {
         height: 300px;
       }
     }
@@ -329,6 +384,33 @@
           </p>
         </div>
 
+        <div class="card full model-card">
+          <h2>Interactive 3D Preview</h2>
+          <p>
+            Rotate, zoom, and inspect the simplified A380 surface model directly in the browser.
+          </p>
+          <model-viewer
+            src="../models/a380-viewer.glb"
+            alt="Interactive 3D preview of the A380 surface model"
+            camera-controls
+            auto-rotate
+            shadow-intensity="1"
+            exposure="0.9"
+            ar
+            oncontextmenu="return false">
+          </model-viewer>
+          <div class="model-note">
+            Interactive 3D preview of the A380 surface model. This is a simplified web-viewing model created for portfolio display, not the original CAD file.
+          </div>
+        </div>
+
+        <div class="card full image-card">
+          <figure>
+            <img src="../images/a380-finished-model.png" alt="Completed A380 surface model in SolidWorks" />
+            <figcaption>Completed A380 surface model showing the final overall geometry and finished aircraft form.</figcaption>
+          </figure>
+        </div>
+
         <div class="card full">
           <h2>Surface Modelling Requirements</h2>
           <ul>
@@ -358,6 +440,13 @@
           </p>
         </div>
 
+        <div class="card full image-card">
+          <figure>
+            <img src="../images/a380-final-surface-model.png" alt="Final A380 aircraft surface model in SolidWorks" />
+            <figcaption>Final aircraft surface model showing the completed SolidWorks surface modelling workflow.</figcaption>
+          </figure>
+        </div>
+
         <div class="card full">
           <h2>Tools Applied</h2>
           <ul>
@@ -368,6 +457,20 @@
             <li><strong>Knit Surface:</strong> used to combine multiple surfaces into a connected surface body.</li>
             <li><strong>Split Line:</strong> used to divide surfaces into separate regions for local control and feature placement.</li>
           </ul>
+        </div>
+
+        <div class="card full">
+          <div class="image-pair">
+            <figure>
+              <img src="../images/a380-lofted-surface.png" alt="Lofted surface example on aircraft model" />
+              <figcaption>Lofted surface example showing how profiles were connected to generate curved aircraft geometry.</figcaption>
+            </figure>
+
+            <figure>
+              <img src="../images/a380-boundary-surface.png" alt="Boundary surface example on aircraft model" />
+              <figcaption>Boundary surface example used to create a controlled freeform surface between selected edges and guide curves.</figcaption>
+            </figure>
+          </div>
         </div>
 
         <div class="card">
@@ -389,34 +492,7 @@
         </div>
 
         <div class="card full">
-          <h2>Skills Demonstrated</h2>
-          <ul>
-            <li>Advanced SolidWorks surface modelling workflow.</li>
-            <li>Use of lofted, boundary, filled, trimmed, knit, and split-line surface tools.</li>
-            <li>Understanding of surface continuity and smooth aerospace geometry.</li>
-            <li>Comparison of CAD systems for engineering surface modelling.</li>
-            <li>Application of NURBS and continuity theory to CAD modelling decisions.</li>
-            <li>Model refinement and troubleshooting of complex surface geometry.</li>
-          </ul>
-        </div>
-
-        <div class="card full">
-          <div class="evidence-grid">
-            <figure>
-              <img src="../images/a380-finished-model.png" alt="Completed A380 surface model in SolidWorks" />
-              <figcaption>Completed A380 surface model showing the final overall geometry and finished aircraft form.</figcaption>
-            </figure>
-
-            <figure>
-              <img src="../images/a380-lofted-surface.png" alt="Lofted surface example on aircraft model" />
-              <figcaption>Lofted surface example showing how profiles were connected to generate curved aircraft geometry.</figcaption>
-            </figure>
-
-            <figure>
-              <img src="../images/a380-boundary-surface.png" alt="Boundary surface example on aircraft model" />
-              <figcaption>Boundary surface example used to create a controlled freeform surface between selected edges and guide curves.</figcaption>
-            </figure>
-
+          <div class="image-pair">
             <figure>
               <img src="../images/a380-filled-surface.png" alt="Filled surface example on aircraft model" />
               <figcaption>Filled surface example used to patch a surface region and close a gap in the aircraft geometry.</figcaption>
@@ -427,6 +503,18 @@
               <figcaption>Knit surface workflow used to combine separate surfaces into a more complete connected body.</figcaption>
             </figure>
           </div>
+        </div>
+
+        <div class="card full">
+          <h2>Skills Demonstrated</h2>
+          <ul>
+            <li>Advanced SolidWorks surface modelling workflow.</li>
+            <li>Use of lofted, boundary, filled, trimmed, knit, and split-line surface tools.</li>
+            <li>Understanding of surface continuity and smooth aerospace geometry.</li>
+            <li>Comparison of CAD systems for engineering surface modelling.</li>
+            <li>Application of NURBS and continuity theory to CAD modelling decisions.</li>
+            <li>Model refinement and troubleshooting of complex surface geometry.</li>
+          </ul>
         </div>
 
         <div class="card full">
