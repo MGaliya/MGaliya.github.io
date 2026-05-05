@@ -171,9 +171,14 @@
       font-size: 0.92rem;
     }
 
-    .evidence-grid {
+    .image-card {
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .image-pair {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: 1fr 1fr;
       gap: 20px;
     }
 
@@ -184,16 +189,64 @@
       overflow: hidden;
     }
 
+    .image-card figure {
+      border: none;
+      border-radius: 22px;
+    }
+
     figure img {
       width: 100%;
+      height: 560px;
+      object-fit: contain;
       display: block;
       background: #ffffff;
+      cursor: zoom-in;
+    }
+
+    .image-pair figure img {
+      height: 430px;
     }
 
     figcaption {
       padding: 14px 16px;
       color: var(--muted);
       font-size: 0.92rem;
+    }
+
+    .image-lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(2, 6, 23, 0.92);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      z-index: 9999;
+    }
+
+    .image-lightbox.active {
+      display: flex;
+    }
+
+    .image-lightbox img {
+      max-width: 96vw;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 14px;
+      background: #ffffff;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
+      cursor: zoom-out;
+    }
+
+    .image-lightbox-close {
+      position: fixed;
+      top: 22px;
+      right: 28px;
+      color: #ffffff;
+      font-size: 2rem;
+      font-weight: 700;
+      cursor: pointer;
+      line-height: 1;
     }
 
     footer {
@@ -206,8 +259,20 @@
     @media (max-width: 900px) {
       .grid,
       .highlight-grid,
-      .evidence-grid {
+      .image-pair {
         grid-template-columns: 1fr;
+      }
+
+      figure img,
+      .image-pair figure img {
+        height: 420px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      figure img,
+      .image-pair figure img {
+        height: 300px;
       }
     }
   </style>
@@ -281,6 +346,13 @@
           </p>
         </div>
 
+        <div class="card full image-card">
+          <figure>
+            <img src="../images/clutch-concepts.png" alt="Concept sketches for centrifugal clutch design" />
+            <figcaption>Initial clutch concept sketches used to compare design approaches before selecting the final concept.</figcaption>
+          </figure>
+        </div>
+
         <div class="card full">
           <h2>CAD Modelling Workflow</h2>
           <ul>
@@ -291,6 +363,20 @@
             <li>Designed the clutch shoe as the key contact component responsible for transferring energy between the flywheel/shaft and clutch bell.</li>
             <li>Assembled the full clutch and generated separate assembly configurations for different shoe counts.</li>
           </ul>
+        </div>
+
+        <div class="card full">
+          <div class="image-pair">
+            <figure>
+              <img src="../images/clutch-components.png" alt="SolidWorks CAD models of the clutch shaft, flywheel, clutch bell, and clutch shoe" />
+              <figcaption>Individual SolidWorks part models including the shaft, flywheel, clutch bell, and clutch shoe.</figcaption>
+            </figure>
+
+            <figure>
+              <img src="../images/clutch-assembly-configurations.png" alt="SolidWorks assembly configurations for centrifugal clutch with 2, 3, and 4 shoes" />
+              <figcaption>Complete clutch assembly and configuration variants for 2-shoe, 3-shoe, and 4-shoe layouts.</figcaption>
+            </figure>
+          </div>
         </div>
 
         <div class="card">
@@ -317,6 +403,13 @@
           </ul>
         </div>
 
+        <div class="card full image-card">
+          <figure>
+            <img src="../images/clutch-engineering-drawings.png" alt="2D engineering drawings for centrifugal clutch components and assembly" />
+            <figcaption>2D engineering drawings showing component dimensions, assembly views, and bill of materials.</figcaption>
+          </figure>
+        </div>
+
         <div class="card full">
           <h2>FEA Simulation</h2>
           <p>
@@ -324,6 +417,13 @@
             The strain and stress results showed higher values near the applied force region, while displacement was
             greatest further from the applied force due to the influence of distance in the torque response.
           </p>
+        </div>
+
+        <div class="card full image-card">
+          <figure>
+            <img src="../images/clutch-fea-results.png" alt="FEA strain, displacement, and stress results for the clutch shoe" />
+            <figcaption>FEA results for the clutch shoe, including strain, displacement, and stress behaviour under load.</figcaption>
+          </figure>
         </div>
 
         <div class="card">
@@ -346,6 +446,13 @@
           </ul>
         </div>
 
+        <div class="card full image-card">
+          <figure>
+            <img src="../images/clutch-motion-analysis.png" alt="Motion analysis results and angular velocity graph for centrifugal clutch assembly" />
+            <figcaption>Motion analysis showing the clutch assembly response and angular velocity behaviour during engagement.</figcaption>
+          </figure>
+        </div>
+
         <div class="card full">
           <h2>Skills Demonstrated</h2>
           <ul>
@@ -356,41 +463,6 @@
             <li>Use of motion analysis to investigate dynamic engagement behaviour.</li>
             <li>Application of theoretical calculations to support simulation work.</li>
           </ul>
-        </div>
-
-        <div class="card full">
-          <h2>Visual Evidence</h2>
-          <div class="evidence-grid">
-            <figure>
-              <img src="../images/clutch-concepts.png" alt="Concept sketches for centrifugal clutch design" />
-              <figcaption>Initial clutch concept sketches used to compare design approaches before selecting the final concept.</figcaption>
-            </figure>
-
-            <figure>
-              <img src="../images/clutch-components.png" alt="SolidWorks CAD models of the clutch shaft, flywheel, clutch bell, and clutch shoe" />
-              <figcaption>Individual SolidWorks part models including the shaft, flywheel, clutch bell, and clutch shoe.</figcaption>
-            </figure>
-
-            <figure>
-              <img src="../images/clutch-assembly-configurations.png" alt="SolidWorks assembly configurations for centrifugal clutch with 2, 3, and 4 shoes" />
-              <figcaption>Complete clutch assembly and configuration variants for 2-shoe, 3-shoe, and 4-shoe layouts.</figcaption>
-            </figure>
-
-            <figure>
-              <img src="../images/clutch-engineering-drawings.png" alt="2D engineering drawings for centrifugal clutch components and assembly" />
-              <figcaption>2D engineering drawings showing component dimensions, assembly views, and bill of materials.</figcaption>
-            </figure>
-
-            <figure>
-              <img src="../images/clutch-fea-results.png" alt="FEA strain, displacement, and stress results for the clutch shoe" />
-              <figcaption>FEA results for the clutch shoe, including strain, displacement, and stress behaviour under load.</figcaption>
-            </figure>
-
-            <figure>
-              <img src="../images/clutch-motion-analysis.png" alt="Motion analysis results and angular velocity graph for centrifugal clutch assembly" />
-              <figcaption>Motion analysis showing the clutch assembly response and angular velocity behaviour during engagement.</figcaption>
-            </figure>
-          </div>
         </div>
 
         <div class="card full">
@@ -406,11 +478,48 @@
     </section>
   </main>
 
+  <div class="image-lightbox" id="image-lightbox">
+    <span class="image-lightbox-close" id="image-lightbox-close">&times;</span>
+    <img id="image-lightbox-img" src="" alt="Expanded project image" />
+  </div>
+
   <footer>
     <div class="container">
       <p>© 2026 Muhammad Patel. Aerospace Engineering Portfolio.</p>
     </div>
   </footer>
+
+  <script>
+    const lightbox = document.getElementById("image-lightbox");
+    const lightboxImg = document.getElementById("image-lightbox-img");
+    const lightboxClose = document.getElementById("image-lightbox-close");
+
+    document.querySelectorAll("figure img").forEach((img) => {
+      img.addEventListener("click", () => {
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightbox.classList.add("active");
+      });
+    });
+
+    function closeLightbox() {
+      lightbox.classList.remove("active");
+      lightboxImg.src = "";
+    }
+
+    lightboxClose.addEventListener("click", closeLightbox);
+
+    lightbox.addEventListener("click", (event) => {
+      if (event.target === lightbox || event.target === lightboxImg) {
+        closeLightbox();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        closeLightbox();
+      }
+    });
+  </script>
 </body>
 </html>
-
