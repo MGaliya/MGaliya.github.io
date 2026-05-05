@@ -171,10 +171,15 @@
       font-size: 0.92rem;
     }
 
-    .evidence-grid {
+    .image-card {
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .image-pair {
       display: grid;
-      grid-template-columns: 1fr;
-      gap: 24px;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
     }
 
     figure {
@@ -184,18 +189,64 @@
       overflow: hidden;
     }
 
+    .image-card figure {
+      border: none;
+      border-radius: 22px;
+    }
+
     figure img {
       width: 100%;
       height: 560px;
       object-fit: contain;
       display: block;
       background: #ffffff;
+      cursor: zoom-in;
+    }
+
+    .image-pair figure img {
+      height: 430px;
     }
 
     figcaption {
       padding: 14px 16px;
       color: var(--muted);
       font-size: 0.92rem;
+    }
+
+    .image-lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(2, 6, 23, 0.92);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      z-index: 9999;
+    }
+
+    .image-lightbox.active {
+      display: flex;
+    }
+
+    .image-lightbox img {
+      max-width: 96vw;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 14px;
+      background: #ffffff;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
+      cursor: zoom-out;
+    }
+
+    .image-lightbox-close {
+      position: fixed;
+      top: 22px;
+      right: 28px;
+      color: #ffffff;
+      font-size: 2rem;
+      font-weight: 700;
+      cursor: pointer;
+      line-height: 1;
     }
 
     footer {
@@ -208,17 +259,19 @@
     @media (max-width: 900px) {
       .grid,
       .highlight-grid,
-      .evidence-grid {
+      .image-pair {
         grid-template-columns: 1fr;
       }
 
-      figure img {
+      figure img,
+      .image-pair figure img {
         height: 420px;
       }
     }
 
     @media (max-width: 600px) {
-      figure img {
+      figure img,
+      .image-pair figure img {
         height: 300px;
       }
     }
@@ -293,6 +346,13 @@
           </p>
         </div>
 
+        <div class="card full image-card">
+          <figure>
+            <img src="../images/turbine-cad-model.png" alt="Turbine blade CAD model and geometric reference" />
+            <figcaption>CAD model and geometric reference used for the turbine blade simulation study.</figcaption>
+          </figure>
+        </div>
+
         <div class="card full">
           <h2>Simulation Workflow</h2>
           <ul>
@@ -305,6 +365,13 @@
             <li>Carried out high-cycle fatigue analysis using K403 superalloy and an S-N curve generated from Basquin's equation.</li>
             <li>Tested design optimisation concepts including twist, fillets, hollowing, serrated ends, and holes near the blade tip.</li>
           </ul>
+        </div>
+
+        <div class="card full image-card">
+          <figure>
+            <img src="../images/turbine-boundary-conditions.png" alt="Boundary conditions used for turbine blade FEA, modal, and fatigue analysis" />
+            <figcaption>Boundary conditions used for load testing, modal analysis, and high-cycle fatigue analysis.</figcaption>
+          </figure>
         </div>
 
         <div class="card">
@@ -325,6 +392,13 @@
           </p>
         </div>
 
+        <div class="card full image-card">
+          <figure>
+            <img src="../images/turbine-material-comparison.png" alt="Material comparison graphs for turbine blade stress, strain, and deformation" />
+            <figcaption>Material comparison graphs showing stress, strain, and deformation behaviour under rotational loading.</figcaption>
+          </figure>
+        </div>
+
         <div class="card full">
           <h2>Modal Analysis</h2>
           <p>
@@ -332,6 +406,13 @@
             around modes 21 to 25, with Mode 23 producing the highest deformation of 0.003082 m at 41.948 Hz. The highest
             deformations were concentrated around the trailing edge, likely due to the thinner geometry in that region.
           </p>
+        </div>
+
+        <div class="card full image-card">
+          <figure>
+            <img src="../images/turbine-modal-analysis.png" alt="Modal analysis results for turbine blade deformation modes" />
+            <figcaption>Modal analysis results identifying high-deformation modes and trailing-edge deformation behaviour.</figcaption>
+          </figure>
         </div>
 
         <div class="card">
@@ -351,6 +432,20 @@
             improvement, reducing stress by 42.96% compared with the original design. Filleted joints were the second
             strongest option, reducing stress by 32.54% by lowering stress concentration at connection regions.
           </p>
+        </div>
+
+        <div class="card full">
+          <div class="image-pair">
+            <figure>
+              <img src="../images/turbine-fatigue-analysis.png" alt="High-cycle fatigue analysis graphs for turbine blade velocity, life, damage, and safety factor" />
+              <figcaption>High-cycle fatigue results showing life reduction, damage increase, and safety factor reduction with velocity.</figcaption>
+            </figure>
+
+            <figure>
+              <img src="../images/turbine-optimisation-results.png" alt="Design optimisation results for turbine blade stress reduction" />
+              <figcaption>Design optimisation comparison showing stress reductions from hollowing, filleting, twisting, serrations, and holes.</figcaption>
+            </figure>
+          </div>
         </div>
 
         <div class="card full">
@@ -380,41 +475,6 @@
         </div>
 
         <div class="card full">
-          <h2>Visual Evidence</h2>
-          <div class="evidence-grid">
-            <figure>
-              <img src="../images/turbine-cad-model.png" alt="Turbine blade CAD model and geometric reference" />
-              <figcaption>CAD model and geometric reference used for the turbine blade simulation study.</figcaption>
-            </figure>
-
-            <figure>
-              <img src="../images/turbine-boundary-conditions.png" alt="Boundary conditions used for turbine blade FEA, modal, and fatigue analysis" />
-              <figcaption>Boundary conditions used for load testing, modal analysis, and high-cycle fatigue analysis.</figcaption>
-            </figure>
-
-            <figure>
-              <img src="../images/turbine-material-comparison.png" alt="Material comparison graphs for turbine blade stress, strain, and deformation" />
-              <figcaption>Material comparison graphs showing stress, strain, and deformation behaviour under rotational loading.</figcaption>
-            </figure>
-
-            <figure>
-              <img src="../images/turbine-modal-analysis.png" alt="Modal analysis results for turbine blade deformation modes" />
-              <figcaption>Modal analysis results identifying high-deformation modes and trailing-edge deformation behaviour.</figcaption>
-            </figure>
-
-            <figure>
-              <img src="../images/turbine-fatigue-analysis.png" alt="High-cycle fatigue analysis graphs for turbine blade velocity, life, damage, and safety factor" />
-              <figcaption>High-cycle fatigue results showing life reduction, damage increase, and safety factor reduction with velocity.</figcaption>
-            </figure>
-
-            <figure>
-              <img src="../images/turbine-optimisation-results.png" alt="Design optimisation results for turbine blade stress reduction" />
-              <figcaption>Design optimisation comparison showing stress reductions from hollowing, filleting, twisting, serrations, and holes.</figcaption>
-            </figure>
-          </div>
-        </div>
-
-        <div class="card full">
           <h2>Reflection</h2>
           <p>
             This project strengthened my understanding of aeromechanics simulation and the importance of validating a
@@ -439,10 +499,48 @@
     </section>
   </main>
 
+  <div class="image-lightbox" id="image-lightbox">
+    <span class="image-lightbox-close" id="image-lightbox-close">&times;</span>
+    <img id="image-lightbox-img" src="" alt="Expanded project image" />
+  </div>
+
   <footer>
     <div class="container">
       <p>© 2026 Muhammad Patel. Aerospace Engineering Portfolio.</p>
     </div>
   </footer>
+
+  <script>
+    const lightbox = document.getElementById("image-lightbox");
+    const lightboxImg = document.getElementById("image-lightbox-img");
+    const lightboxClose = document.getElementById("image-lightbox-close");
+
+    document.querySelectorAll("figure img").forEach((img) => {
+      img.addEventListener("click", () => {
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightbox.classList.add("active");
+      });
+    });
+
+    function closeLightbox() {
+      lightbox.classList.remove("active");
+      lightboxImg.src = "";
+    }
+
+    lightboxClose.addEventListener("click", closeLightbox);
+
+    lightbox.addEventListener("click", (event) => {
+      if (event.target === lightbox || event.target === lightboxImg) {
+        closeLightbox();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        closeLightbox();
+      }
+    });
+  </script>
 </body>
 </html>
